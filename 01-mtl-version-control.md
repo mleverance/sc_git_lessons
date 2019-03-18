@@ -12,7 +12,9 @@ automated version control is much better than this situation:
 
 > show phd comic slide
 
-We've all been in this situation before: it seems ridiculous to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's "Track Changes" or Google Docs' version history.
+We've all been in this situation before: it seems ridiculous to have multiple nearly-identical versions of the same document. Some word processors let us deal with this a little better, such as Microsoft Word's "Track Changes" or Google Docs' version history.  
+
+Ask “Who uses ‘undo’ in their editor?” All say “Me”. ‘Undo’ is the simplest form of version control.
 
 > show slide 2
 Version control systems start with a base version of the document and 
