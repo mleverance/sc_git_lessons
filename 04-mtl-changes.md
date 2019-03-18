@@ -1,18 +1,12 @@
+# Tracking Changes
 ---
-layout: page
-title: Version Control with Git
-subtitle: Tracking Changes
-minutes: 20
----
-> ## Learning Objectives {.objectives}
-> 
+> ## Learning Objectives 
 > *   Go through the modify-add-commit cycle for single and multiple files.
 > *   Explain where information is stored at each stage of Git commit workflow.
 
 Let's create a file called `mars.txt` that contains some notes
 about the Red Planet's suitability as a base.
 (We'll use `nano` to edit the file;
-you can use whatever editor you like.
 In particular, this does not have to be the `core.editor` you set globally earlier.)
 
 ~~~ {.bash}
