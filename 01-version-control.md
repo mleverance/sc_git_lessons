@@ -25,10 +25,9 @@ then you can play back each change and end up with your latest version.
 Once you think of changes as separate from the document itself, 
 you can then think about "playing back" different sets of changes onto the base document 
 and getting different versions of the document. For example, two users can make independent 
-sets of changes based on the same document, and any conflicts get resolved
+sets of changes based on the same document, and any conflicts get resolved  
 
-
-> show slide 4
+> show slide 4 - vocab
 
 A version control system is a tool that keeps track of these changes for us and
 helps us version and merge our files. It allows you to
