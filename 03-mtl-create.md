@@ -58,8 +58,8 @@ nothing to commit (create/copy files and use "git add" to track)
 > ## Places NOT to Create Git Repositories
 >
 > Along with tracking information about planets (the project we have already created), 
-> Dracula would also like to track information about moons.
-> Despite Wolfman's concerns, Dracula creates a `moons` project inside his `planets` 
+> we want to track information about moons.
+> We'll create a `moons` project inside the `planets` 
 > project with the following sequence of commands:
 >
 > ~~~
@@ -78,10 +78,9 @@ nothing to commit (create/copy files and use "git add" to track)
 > 
 > > ## Solution
 > >
-> > No. Dracula does not need to make the `moons` sub-directory a Git repository 
-> > because the `planets` repository will track all files, sub-directories, and 
+> > No. The `planets` repository will track all files, sub-directories, and 
 > > sub-directory files under the `planets` directory.  Thus, in order to track 
-> > all information about moons, Dracula only needed to add the `moons` sub-directory
+> > all information about moons, we only need to add the `moons` sub-directory
 > > to the `planets` directory.
 > > 
 > > Additionally, Git repositories can interfere with each other if they are "nested":
@@ -100,36 +99,29 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ~~~
 > > fatal: Not a git repository (or any of the parent directories): .git
 > > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
-> ## Correcting `git init` Mistakes
-> Wolfman explains to Dracula how a nested repository is redundant and may cause confusion
-> down the road. Dracula would like to remove the nested repository. How can Dracula undo 
+> > 
+## How to fix a `git init` mistake
+> A nested repository is redundant and may cause confusion
+> down the road. We should remove the nested repository. How can we undo 
 > his last `git init` in the `moons` sub-directory?
 >
 > > ## Solution -- USE WITH CAUTION!
 > >
 > > ### Background
-> > Removing files from a git repository needs to be done with caution. To remove files from the working tree and not from your working directory, use
-> > ~~~
-> > $ rm filename
-> > ~~~
-> > 
-> > 
+> > Removing files from a git repository needs to be done with caution. To remove files from the working tree and not from your working directory, use the `rm` command with arguments and a filename
 > > The file being removed has to be in sync with the branch head with no updates. If there are updates, the file can be removed by force by using the `-f` option. Similarly a directory can be removed from git using `rm -r dirname` or `rm -rf dirname`.
 > >
 > > ### Solution
 > > Git keeps all of its files in the `.git` directory.
 > > To recover from this little mistake, Dracula can just remove the `.git`
-> > folder in the moons subdirectory by running the following command from inside the `planets` directory:
-> >
+> > folder in the moons subdirectory by running the following command from inside the `planets` directory:  
+> > But be careful! Running this command in the wrong directory, will remove
+> > the entire Git history of a project you might want to keep. Therefore, always check your current directory using the
+> > command `pwd`.  
 > > ~~~
 > > $ rm -rf moons/.git
 > > ~~~
-> > {: .language-bash}
+> > 
 > >
-> > But be careful! Running this command in the wrong directory, will remove
-> > the entire Git history of a project you might want to keep. Therefore, always check your current directory using the
-> > command `pwd`.
+
 > 
