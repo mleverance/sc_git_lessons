@@ -1,12 +1,7 @@
----
-title: Remotes in GitHub
-teaching: 30
-exercises: 0
+## Remotes in GitHub
 questions:
 - "How do I share my changes with others on the web?"
-objectives:
-- "Explain what remote repositories are and why they are useful."
-- "Push to or pull from a remote repository."
+
 keypoints:
 - "A local Git repository can be connected to one or more remote repositories."
 - "Use the HTTPS protocol to connect to remote repositories until you have learned how to set up SSH."
