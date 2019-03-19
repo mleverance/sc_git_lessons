@@ -7,13 +7,14 @@ This lesson is using a story with three characters - the Wolfman, the Mummy, and
 Let's create a directory for our work and then move into that directory:
 
 ~~~ {.bash}
+$ cd ~/Desktop
 $ mkdir planets
 $ cd planets
 ~~~
 
 Then we tell Git to make `planets` a [repository](reference.html#repository)&mdash;a place where
 Git can store versions of our files:  
-The command `init` initiates a repository
+The command `init` initializess a repository, so using the `git verb` combination, we type:
 
 ~~~ {.bash}
 $ git init
@@ -74,6 +75,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > ~~~
 > 
 >
+> BUT...  
 > Is the `git init` command, run inside the `moons` sub-directory, required for 
 > tracking files stored in the `moons` sub-directory?
 > 
