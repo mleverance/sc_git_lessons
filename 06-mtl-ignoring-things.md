@@ -1,33 +1,28 @@
----
-title: Ignoring Things
-teaching: 5
-exercises: 0
+# Ignoring Things
 questions:
 - "How can I tell Git to ignore files I don't want to track?"
-objectives:
-- "Configure Git to ignore specific files."
-- "Explain why ignoring files can be useful."
-keypoints:
-- "The `.gitignore` file tells Git what files to ignore."
 ---
 
 What if we have files that we do not want Git to track for us,
 like backup files created by our editor
-or intermediate files created during data analysis?
-Let's create a few dummy files:
+or intermediate files created during data analysis?  
+
+Let's create a few dummy files.  
+First we'll create a directory.
+Next we'll use the `touch` command, which is the easiest way to create new, empty files.  
+
+It's also used to change the timestamps (i.e., dates and times of the most recent access and modification) on existing files and directories. 
 
 ~~~
 $ mkdir results
 $ touch a.dat b.dat c.dat results/a.out results/b.out
 ~~~
-{: .language-bash}
 
 and see what Git says:
 
 ~~~
 $ git status
 ~~~
-{: .language-bash}
 
 ~~~
 On branch master
@@ -40,7 +35,6 @@ Untracked files:
 	results/
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
-{: .output}
 
 Putting these files under version control would be a waste of disk space.
 What's worse,
@@ -53,13 +47,11 @@ We do this by creating a file in the root directory of our project called `.giti
 $ nano .gitignore
 $ cat .gitignore
 ~~~
-{: .language-bash}
 
 ~~~
 *.dat
 results/
 ~~~
-{: .output}
 
 These patterns tell Git to ignore any file whose name ends in `.dat`
 and everything in the `results` directory.
@@ -72,7 +64,6 @@ the output of `git status` is much cleaner:
 ~~~
 $ git status
 ~~~
-{: .language-bash}
 
 ~~~
 On branch master
@@ -82,7 +73,7 @@ Untracked files:
 	.gitignore
 nothing added to commit but untracked files present (use "git add" to track)
 ~~~
-{: .output}
+
 
 The only thing Git notices now is the newly-created `.gitignore` file.
 You might think we wouldn't want to track it,
@@ -95,27 +86,23 @@ $ git add .gitignore
 $ git commit -m "Ignore data files and the results folder."
 $ git status
 ~~~
-{: .language-bash}
 
 ~~~
 # On branch master
 nothing to commit, working directory clean
 ~~~
-{: .output}
 
 As a bonus, using `.gitignore` helps us avoid accidentally adding to the repository files that we don't want to track:
 
 ~~~
 $ git add a.dat
 ~~~
-{: .language-bash}
 
 ~~~
 The following paths are ignored by one of your .gitignore files:
 a.dat
 Use -f if you really want to add them.
 ~~~
-{: .output}
 
 If we really want to override our ignore settings,
 we can use `git add -f` to force Git to add something. For example,
@@ -125,7 +112,6 @@ We can also always see the status of ignored files if we want:
 ~~~
 $ git status --ignored
 ~~~
-{: .language-bash}
 
 ~~~
 On branch master
@@ -139,7 +125,27 @@ Ignored files:
 
 nothing to commit, working directory clean
 ~~~
-{: .output}
+
+> ## Exercise 1
+> ## Including Specific Files
+>
+> How would you ignore all `.data` files in your root directory except for
+> `final.data`?
+> Hint: Find out what `!` (the exclamation point operator) does
+>
+> > ## Solution
+> >
+> > You would add the following two lines to your .gitignore:
+> >
+> > ~~~
+> > *.data           # ignore all data files
+> > !final.data      # except final.data
+> > ~~~
+> > {: .output}
+> >
+> > The exclamation point operator will include a previously excluded entry.
+>
+
 
 > ## Ignoring Nested Files
 >
@@ -174,25 +180,7 @@ nothing to commit, working directory clean
 > {: .solution}
 {: .challenge}
 
-> ## Including Specific Files
->
-> How would you ignore all `.data` files in your root directory except for
-> `final.data`?
-> Hint: Find out what `!` (the exclamation point operator) does
->
-> > ## Solution
-> >
-> > You would add the following two lines to your .gitignore:
-> >
-> > ~~~
-> > *.data           # ignore all data files
-> > !final.data      # except final.data
-> > ~~~
-> > {: .output}
-> >
-> > The exclamation point operator will include a previously excluded entry.
-> {: .solution}
-{: .challenge}
+
 
 > ## Ignoring all data Files in a Directory
 >
