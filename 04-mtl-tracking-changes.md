@@ -6,10 +6,7 @@
 
 NAVIGATE TO your Desktop/planets directory  
 
-Let's create a file called `mars.txt` that contains some notes
-about the Red Planet's suitability as a base.
-(We'll use `nano` to edit the file;
-In particular, this does not have to be the `core.editor` you set globally earlier.)
+Let's create a file called `mars.txt` that contains some notes about the Red Planet's suitability as a base.
 
 ~~~ {.bash}
 $ nano mars.txt
@@ -81,8 +78,16 @@ $ git status
 
 Git now knows that it's supposed to keep track of `mars.txt`,
 but it hasn't recorded these changes as a commit yet.
-To get it to do that,
-we need to run one more command:
+To get it to do that, we need to run one more command called `git commit`.  
+
+We use the `-m` flag (for "message")
+to record a short, descriptive, and specific comment that will help us remember later on what we did and why.  
+If we just run `git commit` without the `-m` option,
+Git will launch `nano` so that we can write a longer message.
+
+[Good commit messages][commit-messages] start with a brief (<50 characters) summary of
+changes made in the commit.  If you want to go into more detail, add
+a blank line between the summary line and your additional notes.
 
 ~~~ {.bash}
 $ git commit -m "Start notes on Mars as a base"
@@ -100,16 +105,12 @@ This permanent copy is called a [commit](reference.html#commit)
 (or [revision](reference.html#revision)) and its short identifier is `f22b25e`
 (Your commit may have another identifier.)
 
-We use the `-m` flag (for "message")
-to record a short, descriptive, and specific comment that will help us remember later on what we did and why.
-If we just run `git commit` without the `-m` option,
-Git will launch `nano` (or whatever other editor we configured as `core.editor`)
-so that we can write a longer message.
 
-[Good commit messages][commit-messages] start with a brief (<50 characters) summary of
-changes made in the commit.  If you want to go into more detail, add
-a blank line between the summary line and your additional notes.
 
+### The order of git commands
+* `git status` is first, it displays the state of the working directory and the staging area. It simply shows you what's been going on with `git add` and `git commit`.  
+* `git add` is next, and it stages all the changes to prepare for the commit
+* `git commit` is last, and it commits the staged snapshot to the repository
 
 If we run `git status` now:
 
@@ -145,7 +146,7 @@ the commit's author,
 when it was created,
 and the log message Git was given when the commit was created.
 
-> ## Where Are My Changes? {.callout}
+> ## Where Are My Changes? 
 >
 > If we run `ls` at this point, we will still see just one file called `mars.txt`.
 > That's because Git saves information about files' history
@@ -154,11 +155,10 @@ and the log message Git was given when the commit was created.
 > (and so that we can't accidentally edit or delete an old version).
 
 Now suppose Dracula adds more information to the file.
-(Again, we'll edit with `nano` and then `cat` the file to show its contents;
-you may use a different editor, and don't need to `cat`.)
 
 ~~~ {.bash}
 $ nano mars.txt
+The two moons may be a problem for Wolfman
 $ cat mars.txt
 ~~~
 ~~~ {.output}
