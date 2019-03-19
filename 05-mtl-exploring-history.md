@@ -1,19 +1,8 @@
----
-title: Exploring History
-teaching: 25
-exercises: 0
+# Exploring History
 questions:
 - "How can I identify old versions of files?"
 - "How do I review my changes?"
 - "How can I recover old versions of files?"
-objectives:
-- "Explain what the HEAD of a repository is and how to use it."
-- "Identify and use Git commit numbers."
-- "Compare various versions of tracked files."
-- "Restore old versions of files."
-keypoints:
-- "`git diff` displays differences between commits."
-- "`git checkout` recovers old versions of files."
 ---
 
 As we saw in the previous lesson, we can refer to commits by their
@@ -274,23 +263,6 @@ here's how Git works in cartoon form:
 
 ![https://figshare.com/articles/How_Git_works_a_cartoon/1328266](../fig/git_staging.svg)
 
-> ## Simplifying the Common Case
->
-> If you read the output of `git status` carefully,
-> you'll see that it includes this hint:
->
-> ~~~
-> (use "git checkout -- <file>..." to discard changes in working directory)
-> ~~~
-> {: .language-bash}
->
-> As it says,
-> `git checkout` without a version identifier restores files to the state saved in `HEAD`.
-> The double dash `--` is needed to separate the names of the files being recovered
-> from the command itself:
-> without it,
-> Git would try to use the name of the file as the commit identifier.
-{: .callout}
 
 The fact that files can be reverted one by one
 tends to change the way people organize their work.
@@ -301,6 +273,8 @@ If the introduction and conclusion are stored in separate files,
 on the other hand,
 moving backward and forward in time becomes much easier.
 
+
+> ## Exercise 1
 > ## Recovering Older Versions of a File
 >
 > Jennifer has made changes to the Python script that she has been working on for weeks, and the
@@ -341,6 +315,13 @@ moving backward and forward in time becomes much easier.
 > > As discussed above, you are left in a *detached* `HEAD` state, and you don't want to be there.
 > {: .solution}
 {: .challenge}
+
+
+### keypoints from this lesson:
+- "`git diff` displays differences between commits."
+- "`git checkout` recovers old versions of files."
+
+### END HERE
 
 > ## Reverting a Commit
 >
