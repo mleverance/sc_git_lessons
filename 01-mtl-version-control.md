@@ -7,6 +7,10 @@
 
 We'll start by exploring how version control can be used
 to keep track of what one person did and when.  
+Version control is one of the most important concepts we teach in SC, but Git is a complicated tool.  
+Caveat: It requires time and practice to feel comfortable with it. You might leave here today thinking "this is really difficult" and that's ok.  
+
+## Version control
 Even if you aren't collaborating with other people,
 automated version control is much better than this situation:
 
