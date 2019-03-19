@@ -46,7 +46,7 @@ index b36abfd..0848c8d 100644
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
 real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` to refer to the commit one before `HEAD`.
+that by adding `~1` to refer to the commit one before `HEAD`, because `HEAD` refers to the _most recent commit_ of the working directory.
 
 ~~~
 $ git diff HEAD~1 mars.txt
@@ -112,9 +112,15 @@ has a unique 40-character identifier.
 Typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters:  
 
-# HELP
-> Let's find the character string for your first commit
-> When you have that, we'll run `git diff` using the first six characters of the string
+### Identify the correct commit identifier
+Let's find the character string for your first commit  
+We'll run the `git log` command with the --oneline option to find out the identifier
+```
+$ git log --oneline
+```
+The line at the bottom of the list is the first commit (how do we know this? when we ran the log for the file there were timestamps)  
+
+Using that ID, we'll run `git diff` 
 ~~~
 $ git diff f22b25e mars.txt
 ~~~
@@ -173,7 +179,12 @@ In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
 If we want to go back even further,
-we can use the commit identifier from the first commit instead:
+we can use the commit identifier from the first commit instead.  
+
+We'll need those seven digits we found earlier using
+```
+$ git log --online
+```
 
 ~~~
 $ git checkout f22b25e mars.txt
