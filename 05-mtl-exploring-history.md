@@ -17,8 +17,8 @@ keypoints:
 ---
 
 As we saw in the previous lesson, we can refer to commits by their
-identifiers.  You can refer to the _most recent commit_ of the working
-directory by using the identifier `HEAD`.
+identifiers. The full 40 character identifiers are associated with each commit, and you can see them in `git log`   
+You can refer to the _most recent commit_ of the working directory by using the identifier `HEAD`.
 
 We've been adding one line at a time to `mars.txt`, so it's easy to track our
 progress by looking, so let's do that using our `HEAD`s.  Before we start,
@@ -26,9 +26,9 @@ let's make a change to `mars.txt`, adding yet another line.
 
 ~~~
 $ nano mars.txt
+An ill-considered change
 $ cat mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
@@ -36,14 +36,12 @@ The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 An ill-considered change
 ~~~
-{: .output}
 
 Now, let's see what we get.
 
 ~~~
 $ git diff HEAD mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -56,27 +54,21 @@ index b36abfd..0848c8d 100644
  But the Mummy will appreciate the lack of humidity
 +An ill-considered change.
 ~~~
-{: .output}
 
 which is the same as what you would get if you leave out `HEAD` (try it).  The
 real goodness in all this is when you can refer to previous commits.  We do
-that by adding `~1` 
-(where "~" is "tilde", pronounced [**til**-d*uh*]) 
-to refer to the commit one before `HEAD`.
+that by adding `~1` to refer to the commit one before `HEAD`.
 
 ~~~
 $ git diff HEAD~1 mars.txt
 ~~~
-{: .language-bash}
 
 If we want to see the differences between older commits we can use `git diff`
 again, but with the notation `HEAD~1`, `HEAD~2`, and so on, to refer to them:
 
-
 ~~~
 $ git diff HEAD~2 mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -89,14 +81,12 @@ index df0654a..b36abfd 100644
 +But the Mummy will appreciate the lack of humidity
 +An ill-considered change
 ~~~
-{: .output}
 
 We could also use `git show` which shows us what changes we made at an older commit as well as the commit message, rather than the _differences_ between a commit and our working directory that we see by using `git diff`.
 
 ~~~
 $ git show HEAD~2 mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 commit 34961b159c27df3b475cfe4415d94a6d1fcd064d
@@ -113,7 +103,6 @@ index 0000000..df0654a
 @@ -0,0 +1 @@
 +Cold and dry, but everything is my favorite color
 ~~~
-{: .output}
 
 In this way,
 we can build up a chain of commits.
@@ -129,37 +118,17 @@ that `git log` displays.
 These are unique IDs for the changes,
 and "unique" really does mean unique:
 every change to any set of files on any computer
-has a unique 40-character identifier.
-Our first commit was given the ID
-`f22b25e3233b4645dabd0d81e651fe074bd8e73b`,
-so let's try this:
+has a unique 40-character identifier.  
 
-~~~
-$ git diff f22b25e3233b4645dabd0d81e651fe074bd8e73b mars.txt
-~~~
-{: .language-bash}
+Typing out random 40-character strings is annoying,
+so Git lets us use just the first few characters:  
 
-~~~
-diff --git a/mars.txt b/mars.txt
-index df0654a..93a3e13 100644
---- a/mars.txt
-+++ b/mars.txt
-@@ -1 +1,4 @@
- Cold and dry, but everything is my favorite color
-+The two moons may be a problem for Wolfman
-+But the Mummy will appreciate the lack of humidity
-+An ill-considered change
-~~~
-{: .output}
-
-That's the right answer,
-but typing out random 40-character strings is annoying,
-so Git lets us use just the first few characters:
+> If you look back at your result from the command we just ran (git show HEAD~2 mars.txt), 
+> take the first six characters and use them in a `git diff` command:
 
 ~~~
 $ git diff f22b25e mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 diff --git a/mars.txt b/mars.txt
@@ -172,11 +141,9 @@ index df0654a..93a3e13 100644
 +But the Mummy will appreciate the lack of humidity
 +An ill-considered change
 ~~~
-{: .output}
 
-All right! So
-we can save changes to files and see what we've changed—now how
-can we restore older versions of things?
+All right! So we can save changes to files and see what we've changed—  
+now how can we restore older versions of things?
 Let's suppose we change our mind about the last update to
 `mars.txt` (the "ill-considered change").
 
@@ -186,7 +153,6 @@ but those changes haven't been staged:
 ~~~
 $ git status
 ~~~
-{: .language-bash}
 
 ~~~
 On branch master
@@ -198,7 +164,6 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 ~~~
-{: .output}
 
 We can put things back the way they were
 by using `git checkout`:
@@ -207,16 +172,13 @@ by using `git checkout`:
 $ git checkout HEAD mars.txt
 $ cat mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
 The two moons may be a problem for Wolfman
 But the Mummy will appreciate the lack of humidity
 ~~~
-{: .output}
 
-As you might guess from its name,
 `git checkout` checks out (i.e., restores) an old version of a file.
 In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
@@ -227,22 +189,18 @@ we can use a commit identifier instead:
 ~~~
 $ git checkout f22b25e mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 $ cat mars.txt
 ~~~
-{: .language-bash}
 
 ~~~
 Cold and dry, but everything is my favorite color
 ~~~
-{: .output}
 
 ~~~
 $ git status
 ~~~
-{: .language-bash}
 
 ~~~
 On branch master
@@ -252,7 +210,7 @@ Changes to be committed:
 	modified:   mars.txt
 
 ~~~
-{: .output}
+
 
 Notice that the changes are on the staged area.
 Again, we can put things back the way they were
@@ -261,7 +219,7 @@ by using `git checkout`:
 ~~~
 $ git checkout HEAD mars.txt
 ~~~
-{: .language-bash}
+
 
 > ## Don't Lose Your HEAD
 >
@@ -270,7 +228,7 @@ $ git checkout HEAD mars.txt
 > ~~~
 > $ git checkout f22b25e mars.txt
 > ~~~
-> {: .language-bash}
+>
 >
 > to revert `mars.txt` to its state after the commit `f22b25e`. But be careful! 
 > The command `checkout` has other important functionalities and Git will misunderstand
@@ -280,7 +238,7 @@ $ git checkout HEAD mars.txt
 > ~~~
 > $ git checkout f22b25e
 > ~~~
-> {: .language-bash}
+> 
 > ~~~
 > Note: checking out 'f22b25e'.
 >
@@ -295,7 +253,7 @@ $ git checkout HEAD mars.txt
 >
 > HEAD is now at f22b25e Start notes on Mars as a base
 > ~~~
-> {: .error}
+> 
 >
 > The "detached HEAD" is like "look, but don't touch" here,
 > so you shouldn't make any changes in this state.
