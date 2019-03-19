@@ -112,7 +112,7 @@ This permanent copy is called a [commit](reference.html#commit)
 * `git add` is next, and it stages all the changes to prepare for the commit
 * `git commit` is last, and it commits the staged snapshot to the repository
 
-If we run `git status` now:
+If we run `git status` now, it tells us everything is up to date.
 
 ~~~ {.bash}
 $ git status
@@ -122,7 +122,6 @@ $ git status
 nothing to commit, working directory clean
 ~~~
 
-it tells us everything is up to date.
 If we want to know what we've done recently,
 we can ask Git to show us the project's history using `git log`:
 
@@ -190,7 +189,7 @@ but we haven't told Git we will want to save those changes
 (which we do with `git add`)
 nor have we saved them (which we do with `git commit`).
 So let's do that now. It is good practice to always review
-our changes before saving them. We do this using `git diff`.
+our changes before saving them. We do this using the command `git diff`.
 This shows us the differences between the current state
 of the file and the most recently saved version:
 
@@ -242,6 +241,13 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 Whoops:
 Git won't commit because we didn't use `git add` first.
+```
+Order of operations quiz:
+`git status`
+`git add`
+`git commit`
+```
+
 Let's fix that:
 
 ~~~ {.bash}
@@ -407,7 +413,7 @@ repository (`git commit`):
 
 ![The Git Commit Workflow](fig/git-committing.svg)
 
-
+> ## Exercise 1
 > ## Committing Changes to Git {.challenge}
 >
 > Which command(s) below would save the changes of `myfile.txt` to my local Git repository?
@@ -434,7 +440,15 @@ repository (`git commit`):
 >     ~~~
 >     $ git commit -m myfile.txt "my recent changes"
 >     ~~~
+> 
+> Solution:
+> 1. Would only create a commit if files have already been staged.
+> 2. Would try to create a new repository.
+> 3. Is correct: first add the file to the staging area, then commit.
+> 4. Would try to commit a file “my recent changes” with the message myfile.txt.
 
+
+## IF TIME
 > ## `bio` Repository {.challenge}
 >
 > Create a new Git repository on your computer called `bio`.
@@ -442,5 +456,28 @@ repository (`git commit`):
 > commit your changes,
 > then modify one line, add a fourth line, and display the differences
 > between its updated state and its original state.
+> 
+> Solution:
+> If needed, move out of the planets folder:
+> $ cd ..
+>
+> Create a new folder called bio and ‘move’ into it:
+> $ mkdir bio
+> $ cd bio
+>
+> Initialise git:
+> $ git init
+>
+> Create your biography file me.txt using nano. Once in place, add and commit it to the repository:
+> 
+> $ git add me.txt
+> $ git commit -m'Adding biography file'
+> 
+> Modify the file as described (modify one line, add a fourth line). 
+> To display the differences between its updated state and its original state, use git diff:
+>
+>$ git diff me.txt
+
+
 
 [commit-messages]: http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
