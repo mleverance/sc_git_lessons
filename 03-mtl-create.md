@@ -88,9 +88,11 @@ nothing to commit (create/copy files and use "git add" to track)
 > > 
 > > Additionally, Git repositories can interfere with each other if they are "nested":
 > > the outer repository will try to version-control
-> > the inner repository.  
+> > the inner repository.   
+> > 
 > > Therefore, it's best to create each new Git
-> > repository in a separate directory. To be sure that there is no conflicting
+> > repository in a separate directory.  
+> > To be sure that there is no conflicting
 > > repository in the directory, check the output of `git status`. If it looks
 > > like the following, you are good to go to create a new repository as shown
 > > above:
@@ -111,9 +113,7 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ## Solution -- USE WITH CAUTION!
 > >
 > > ### Background
-> > Removing files from a git repository needs to be done with caution. To remove files from the working tree and not from your working directory, use the `rm` command with arguments and a filename
-> > The file being removed has to be in sync with the branch head with no updates. If there are updates, the file can be removed by force by using the `-f` option. Similarly a directory can be removed from git using `rm -r dirname` or `rm -rf dirname`.
-> >
+> > Removing files from a git repository needs to be done with caution. To remove files from the working tree and not from your working directory, use the `rm` command with flags and a filename.
 > > ### Solution
 > > Git keeps all of its files in the `.git` directory.
 > > To recover from this little mistake, we can just remove the `.git`
@@ -124,7 +124,3 @@ nothing to commit (create/copy files and use "git add" to track)
 > > ~~~
 > > $ rm -rf moons/.git
 > > ~~~
-> > 
-> >
-
-> 
