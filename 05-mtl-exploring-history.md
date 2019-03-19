@@ -123,7 +123,8 @@ has a unique 40-character identifier.
 Typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters:  
 
-> If you run `git log` you can find the character string for your first commit
+# HELP
+> Let's find the character string for your first commit
 > When you have that, we'll run `git diff` using the first six characters of the string
 ~~~
 $ git diff f22b25e mars.txt
