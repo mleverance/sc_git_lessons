@@ -123,9 +123,8 @@ has a unique 40-character identifier.
 Typing out random 40-character strings is annoying,
 so Git lets us use just the first few characters:  
 
-> If you look back at your result from the command we just ran (git show HEAD~2 mars.txt), 
-> take the first six characters and use them in a `git diff` command:
-
+> If you run `git log` you can find the character string for your first commit
+> When you have that, we'll run `git diff` using the first six characters of the string
 ~~~
 $ git diff f22b25e mars.txt
 ~~~
@@ -184,7 +183,7 @@ In this case,
 we're telling Git that we want to recover the version of the file recorded in `HEAD`,
 which is the last saved commit.
 If we want to go back even further,
-we can use a commit identifier instead:
+we can use the commit identifier from the first commit instead:
 
 ~~~
 $ git checkout f22b25e mars.txt
@@ -229,7 +228,6 @@ $ git checkout HEAD mars.txt
 > $ git checkout f22b25e mars.txt
 > ~~~
 >
->
 > to revert `mars.txt` to its state after the commit `f22b25e`. But be careful! 
 > The command `checkout` has other important functionalities and Git will misunderstand
 > your intentions if you are not accurate with the typing. For example, 
@@ -258,7 +256,7 @@ $ git checkout HEAD mars.txt
 > The "detached HEAD" is like "look, but don't touch" here,
 > so you shouldn't make any changes in this state.
 > After investigating your repo's past state, reattach your `HEAD` with `git checkout master`.
-{: .callout}
+
 
 It's important to remember that
 we must use the commit number that identifies the state of the repository
